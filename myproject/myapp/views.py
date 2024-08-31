@@ -4,7 +4,7 @@ from django.shortcuts import render
 
 # Create your views here.
 def index(req):
-    return render(req, "home.html", context={"title": "Главная страница"})
+    return render(req, "index.html", context={"title": "Главная страница"})
 
 def about(req):
     return render(req, "about.html")
@@ -47,3 +47,8 @@ def get_phrase1(req):
 
 def get_phrase2(req):
     return HttpResponse("Вторая фраза")
+def contact(req):
+    print(req.POST.get("name"))
+    print(req.POST.get("email"))
+    print(req.POST.get("msg"))
+    return HttpResponse("Форма успешно отправлена!")

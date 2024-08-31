@@ -26,4 +26,5 @@ urlpatterns = [
     path('game/', game),
     path('pages/page1/', get_phrase1),
     path('pages/page2/', get_phrase2),
+    path('contact/', contact),
 ]
