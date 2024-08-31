@@ -1,11 +1,15 @@
 import random
 from django.http import HttpResponse
-from django.shortcuts import render
-
+from django.shortcuts import render, get_object_or_404
+from .models import Article
 # Create your views here.
 def index(req):
-    return render(req, "index.html", context={"title": "Главная страница"})
+    articles = Article.objects.all()
+    return render(req, "index.html", {"articles": articles, 'title': "БЛОГ"})
 
+def article(req, id):
+    article = get_object_or_404(Article, id=id)
+    return render(req, 'post.html', {"article": article, "title": article.title})
 def about(req):
     return render(req, "about.html")
 
